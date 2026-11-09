@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>LoongBuy spreadsheet | A field guide to links, fit and QC</title>
+  <meta name="description" content="Use this LoongBuy spreadsheet guide to check seller links, compare shoe and clothing measurements, review QC photos and estimate parcel costs before shipping.">
+  <meta name="theme-color" content="#35222d">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf6ed;
+      --ink: #35222d;
+      --muted: #66545e;
+      --line: #d8cacf;
+      --lime: #e4efad;
+      --white: #fffdf8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.65 system-ui, sans-serif; }
+    .wrap { width: min(72rem, calc(100% - 2rem)); margin-inline: auto; }
+    a { color: inherit; text-underline-offset: .2em; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #a04b72; outline-offset: 3px; }
+    h1, h2, h3, p, figure { margin: 0; }
+    h1, h2, h3 { line-height: 1.1; }
+    h1, h2 { font-family: Georgia, serif; letter-spacing: -.035em; }
+    h1 { font-size: clamp(2.65rem, 7vw, 5.75rem); overflow-wrap: anywhere; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
+    h3 { font-size: 1.25rem; }
+    img { display: block; width: 100%; height: auto; }
+    .top { border-bottom: 1px solid var(--line); }
+    .mast { min-height: 3.75rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .3rem 1rem; }
+    .logo { font-weight: 850; text-decoration: none; }
+    .label { font-size: .76rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(1.25rem, 4vw, 3.5rem); padding-block: clamp(1.5rem, 5vw, 3.5rem); align-items: center; }
+    .hero h1 { margin-block: .4rem .9rem; }
+    .hero p + p { margin-top: .7rem; }
+    .hero figure { background: #eeeae7; }
+    .hero img { aspect-ratio: 4 / 3; object-fit: cover; object-position: center 63%; }
+    figcaption { padding: .55rem .75rem; font-size: .85rem; color: var(--muted); }
+    .categories { background: var(--ink); color: var(--white); padding: clamp(1rem, 3vw, 2rem); }
+    .categories h2 { margin-bottom: 1rem; }
+    .index, .plates { display: grid; list-style: none; margin: 0; padding: 0; }
+    .index { grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 1px; background: #69545f; }
+    .index a { display: block; height: 100%; padding: .65rem .7rem; background: var(--ink); font-weight: 650; overflow-wrap: anywhere; }
+    .index a:hover, .index a:focus-visible { background: var(--lime); color: var(--ink); }
+    .section { margin-block: clamp(2.6rem, 7vw, 5rem); }
+    .section > h2 { margin-bottom: .8rem; }
+    .articles { margin-top: 1.4rem; }
+    .articles article { display: grid; grid-template-columns: minmax(12rem, 1fr) 2fr; gap: .6rem 1.4rem; border-top: 1px solid var(--line); padding-block: 1.15rem; }
+    .articles article:last-child { border-bottom: 1px solid var(--line); }
+    .plates { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+    .plates figure { height: 100%; border: 1px solid var(--line); background: var(--white); }
+    .plates img { aspect-ratio: 1; object-fit: contain; background: #f5f3f0; }
+    .faq { max-width: 55rem; }
+    details { border-bottom: 1px solid var(--line); padding-block: .75rem; }
+    summary { cursor: pointer; font-weight: 750; }
+    details p { margin-top: .55rem; }
+    footer { background: var(--lime); padding-block: 1.15rem; }
+    footer p { margin-top: .3rem; }
+    @media (max-width: 46rem) {
+      .hero, .articles article { grid-template-columns: 1fr; }
+      .hero img { aspect-ratio: 2 / 1; }
+      .plates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 25rem) {
+      .index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "LoongBuy spreadsheet | A field guide to links, fit and QC",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a LoongBuy spreadsheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A LoongBuy spreadsheet is a product discovery list that collects marketplace links and may include photos or notes. Open the source listing to check the seller, selected variant and current availability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do if a product link is broken?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Search again using the model name, style code or seller name. Before using a replacement link, confirm that the listing offers the same model, color and size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can warehouse QC photos establish authenticity?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Warehouse QC photos can show visible details such as labels, seams and marks. Authenticity requires separate evidence, such as verifiable provenance or an independent authentication service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I estimate the total parcel cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add the item subtotal, domestic delivery, international freight and any applicable fees or import charges. For a better freight estimate, compare quotes using the packed dimensions and weight."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do the category links go?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The category links open the corresponding CAfans catalog sections. The brand images on this page are visual references."
+        }
+      }
+    ]
+  }
+  </script>
+  <!--
+    Editorial research: Google returned a verification challenge. These ten
+    search results for the same query informed the guide; Google ranks are unverified.
+    loongbuy.net | marketplace discovery and ordering
+    loongbuy.live | category navigation
+    alibabaspreadsheet.com/loongbuy-spreadsheet | marketplace link handling
+    mickeybuys.com/agents/loongbuy/ | warehouse and forwarding
+    loongbuyhaul.com/spreadsheet/ | packed dimensions
+    loongbuywithqc.com/spreadsheet | category and QC labels
+    findhaul.com/finds/loongbuy | duplicate seller listings
+    usfansyupoo.com/agents/loongbuy/ | product discovery
+    repsheet.net/spreadsheet/loongbuy | item notes and QC
+    jadeship.com/search/spreadsheet/loongbuy | spreadsheet search
+  -->
+<link rel="canonical" href="https://kakobuyfinds.github.io/tarqh/">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap mast">
+      <a class="logo" href="https://www.cafans.com">www.cafans.com</a>
+      <span class="label">Independent shopping field guide</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="label">Links &nbsp;/&nbsp; Fit &nbsp;/&nbsp; Quality checks</p>
+        <h1 id="page-title">LoongBuy spreadsheet</h1>
+        <p>A LoongBuy spreadsheet helps you find product listings. Before ordering, open the original listing, confirm the exact variant and compare the seller’s measurements with something you already wear.</p>
+        <p>Browse CAfans categories below, then use the field notes to decide what to check before you order and again before you ship.</p>
+      </div>
+      <figure>
+        <img src="https://static.nike.com/a/images/w_720,f_auto,q_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/eb4e14d6-12d0-4df9-a186-a048263e1c6a/AIR+MAX+90.png"
+             srcset="https://static.nike.com/a/images/w_400,f_auto,q_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/eb4e14d6-12d0-4df9-a186-a048263e1c6a/AIR+MAX+90.png 400w, https://static.nike.com/a/images/w_720,f_auto,q_auto/u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/eb4e14d6-12d0-4df9-a186-a048263e1c6a/AIR+MAX+90.png 720w"
+             sizes="(max-width: 46rem) calc(100vw - 2rem), (max-width: 74rem) 44vw, 500px"
+             width="720" height="900" alt="Side view of a blue and white Nike Air Max 90 sneaker" fetchpriority="high" decoding="async">
+        <figcaption>Nike Air Max 90 · Side view for comparing the upper, heel and sole.</figcaption>
+      </figure>
+    </section>
+
+    <nav class="categories" aria-labelledby="category-title">
+      <h2 id="category-title">Browse by category</h2>
+      <ul class="index">
+        <li><a href="https://cafans.com/category-911-Shoes.html">Shoes</a></li>
+        <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Hoodies/Sweaters</a></li>
+        <li><a href="https://cafans.com/category-913-T-Shirts.html">T-Shirts</a></li>
+        <li><a href="https://cafans.com/category-914-Jackets.html">Jackets</a></li>
+        <li><a href="https://cafans.com/category-915-Pants%2FShorts.html">Pants/Shorts</a></li>
+        <li><a href="https://cafans.com/category-916-Headwear.html">Headwear</a></li>
+        <li><a href="https://cafans.com/category-917-Sets.html">Sets</a></li>
+        <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html">Underwear/underpants</a></li>
+        <li><a href="https://cafans.com/category-919-Jersey.html">Jersey</a></li>
+        <li><a href="https://cafans.com/category-920-Accessories.html">Accessories</a></li>
+      </ul>
+    </nav>
+
+    <section class="section" aria-labelledby="notes-title">
+      <h2 id="notes-title">Four checks from listing to parcel</h2>
+      <p>Save the evidence you’ll need to compare the listing with what arrives at the warehouse.</p>
+      <div class="articles">
+        <article>
+          <h3>01. LoongBuy product links</h3>
+          <p>When a spreadsheet entry points to a Weidian listing, a Taobao product page or a 1688 seller page, record the original marketplace URL and seller name. Match the model or style code, then check the color option, size availability and SKU selection on the live listing. If two rows resolve to the same seller and item ID, count them as one listing.</p>
+        </article>
+        <article>
+          <h3>02. LoongBuy size guide</h3>
+          <p>For sneakers, compare the seller’s shoe size chart and insole length with a pair that fits. A size conversion chart helps interpret labels, while a measurement gives you something to compare directly. For hoodies and T-shirts, compare flat chest width, shoulder width and body length. For jackets, add sleeve length and allow room for a layer. For pants, check the laid-flat waistband, rise and inseam. For caps, check the head circumference range.</p>
+        </article>
+        <article>
+          <h3>03. LoongBuy QC photos</h3>
+          <p>Start with the warehouse overview photo, then match the size label and color to your order. On a shoe, look at heel alignment and outsole condition. On a jacket, inspect seam stitching and zipper alignment. For jewelry, ask for a clasp close-up. If fit matters, request a ruler photo with both ends of the measurement visible. Keep the photos and check the seller’s return window while the item is still at the warehouse.</p>
+        </article>
+        <article>
+          <h3>04. LoongBuy shipping guide</h3>
+          <p>Separate domestic delivery from the international freight quote. Compare shipping lines using actual weight and packed parcel dimensions, since a carrier may bill by volumetric weight. Before parcel consolidation, ask how shoe box removal might affect size and protection. Check tracking, coverage and any applicable import charges for the destination before dispatch.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reference-title">
+      <h2 id="reference-title">Details worth a closer look</h2>
+      <p>Use these brand photographs as visual references when deciding what to ask a seller or warehouse to photograph.</p>
+      <ul class="plates">
+        <li>
+          <figure>
+            <img src="https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_M/louis-vuitton--BWU00NMO45_PM2_Front%20view.jpg?wid=420" width="490" height="490" alt="Pair of green Louis Vuitton LV Trainer sneakers with white trim and laces" loading="lazy" decoding="async">
+            <figcaption><strong>Louis Vuitton</strong><br>Compare toe shape and panel edges.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="https://assets.christiandior.com/is/image/diorprod/613C413B3093C989_E01?wid=420&amp;fmt=jpeg&amp;qlt=78" width="420" height="420" alt="Front view of a black Dior Oblique hooded quilted down jacket" loading="lazy" decoding="async">
+            <figcaption><strong>Dior</strong><br>Check the front zip and quilting.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1793124052/A00JE4_4HBMK_9664_001_100_0000_Light-gg-cotton-canvas-baseball-hat.jpg" width="490" height="490" alt="Sand Gucci GG canvas baseball cap with a green and red side stripe" loading="lazy" decoding="async">
+            <figcaption><strong>Gucci</strong><br>Look at brim shape and panel seams.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img src="https://assets.hermes.com/is/image/hermesproduct/700001FP01_front_wm_101?wid=420&amp;hei=560&amp;fit=fit&amp;$product_default_bg$=" width="420" height="560" alt="Black enamel Hermès Clic H bracelet with a silver-tone H clasp" loading="lazy" decoding="async">
+            <figcaption><strong>Hermès</strong><br>Ask for a clear view of the closure.</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+      <details open>
+        <summary>What is a LoongBuy spreadsheet?</summary>
+        <p>A LoongBuy spreadsheet is a product discovery list that collects marketplace links and may include photos or notes. Open the source listing to check the seller, selected variant and current availability.</p>
+      </details>
+      <details>
+        <summary>What should I do if a product link is broken?</summary>
+        <p>Search again using the model name, style code or seller name. Before using a replacement link, confirm that the listing offers the same model, color and size.</p>
+      </details>
+      <details>
+        <summary>Can warehouse QC photos establish authenticity?</summary>
+        <p>Warehouse QC photos can show visible details such as labels, seams and marks. Authenticity requires separate evidence, such as verifiable provenance or an independent authentication service.</p>
+      </details>
+      <details>
+        <summary>How can I estimate the total parcel cost?</summary>
+        <p>Add the item subtotal, domestic delivery, international freight and any applicable fees or import charges. For a better freight estimate, compare quotes using the packed dimensions and weight.</p>
+      </details>
+      <details>
+        <summary>Where do the category links go?</summary>
+        <p>The category links open the corresponding CAfans catalog sections. The brand images on this page are visual references.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="logo" href="https://www.cafans.com">www.cafans.com</a>
+      <p>Independent editorial guide. Brand imagery illustrates construction details. Catalog availability varies.</p>
+    </div>
+  </footer>
+</body>
+</html>
